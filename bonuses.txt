@@ -1,0 +1,46 @@
+BONUS CHALLENGE FORM
+--------------------
+
+For each bonus challenge you have implemented, please replace the sentence "We are not entitled to this bonus."
+with a short description of:
+
+1. How it was implemented in your code
+2. Where it was used (in which class methods).
+3. How you tested that it is working correctly.
+
+--------------------
+
+1. Fully supporting all configuration fields and avoiding the use of magic numbers
+
+1. We build the functions in a way that they can work for any value that you can put in the Config class.
+2. We used them in all of the classes we changed: Dealer,Player and Table class.
+3. We change the configuration fields and run them with different values each time and saw that the game runs as expected. 
+--------------------
+
+2. Terminating all threads (that you created) gracefully and in reverse order to the order they were created in.
+
+1. When we wanted to terminate the player and ai_player threads we changed their boolean value 'terminate' to true, we used 'interrupt'
+   for the ai so it will wake up if sleeping somewhere and used join so the player will wait until 'his' ai_thread will 'die' before
+   he finished his task and exit his run loop. Then interrupt the player thread and used join so he will 'die' gracefully.
+   to do it in a reverse order we first did it to the ai_player thread and then for the player thread  by order because we
+   created the ai_player thread after the actual player.
+2. we did it in the Dealer and Player classes in the terminate functions.
+3. we used print messeges to see which thread "dies" first and saw it was in the order we expected.
+
+
+--------------------
+
+3. Handling the config.turnTimeoutMillis value as follows:
+config.turnTimeoutMillis < 0: display nothing.
+config.turnTimeoutMillis = 0: display a timer since the last action (reshuffle or set collected).
+Note: in modes without a countdown timer the dealer must ensure there is always at least one legal set on the table.
+
+We are not entitled to this bonus.
+
+--------------------
+
+4. Making sure that the threads do not wake up unless some actual job needs to be done (e.g., a value needs to be
+changed on the display, key input needs to be handled, etc.) and the only threads created by you are:
+1 thread per player + 1 additional thread for non-human players.
+
+We are not entitled to this bonus.
